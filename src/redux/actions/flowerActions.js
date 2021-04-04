@@ -1,11 +1,18 @@
 import * as types from "./actionTypes";
+import { LOAD_FLOWERS_SUCCESS } from "./actionTypes";
 
 export function createFlower(flower) {
   return { type: types.CREATE_FLOWER, flower: flower };
 }
 
-export function loadFlower() {
+function loadFlowersSuccess(flowers) {
+  return { type: types.LOAD_FLOWERS_SUCCESS, flowers };
+}
+
+export function loadFlowers() {
   return function (dispatch) {
-    return;
+    return fetch("/api/flowers")
+      .then((response) => response.json())
+      .then((json) => dispatch(loadFlowersSuccess(json)));
   };
 }
