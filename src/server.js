@@ -8,9 +8,11 @@ export function makeServer(environment = { environment: "test" }) {
     },
 
     routes() {
-      this.namespace = "api";
-
-      this.resource("flower");
+      this.get("/api/flowers/", () => [
+        { id: "1", name: "rose", color: "yellow" },
+        { id: "2", name: "rose", color: "red" },
+        { id: "3", name: "rose", color: "purple" },
+      ]);
     },
   });
 }

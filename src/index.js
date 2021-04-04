@@ -11,10 +11,6 @@ if (process.env.NODE_ENV === "development") {
   makeServer({ environment: "development" });
 }
 
-fetch("api/flowers")
-  .then((response) => response.json())
-  .then((json) => alert(json));
-
 const store = configureStore();
 render(
   <ReduxProvider store={store}>
