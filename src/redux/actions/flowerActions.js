@@ -1,5 +1,4 @@
 import * as types from "./actionTypes";
-import { LOAD_FLOWERS_SUCCESS } from "./actionTypes";
 
 export function createFlower(flower) {
   return { type: types.CREATE_FLOWER, flower: flower };

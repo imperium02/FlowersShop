@@ -9,9 +9,9 @@ export function makeServer(environment = { environment: "test" }) {
 
     routes() {
       this.get("/api/flowers/", () => [
-        { id: "1", name: "rose", color: "yellow" },
-        { id: "2", name: "rose", color: "red" },
-        { id: "3", name: "rose", color: "purple" },
+        { id: "1", name: "Rose", color: "Yellow" },
+        { id: "2", name: "Rose", color: "Red" },
+        { id: "3", name: "Rose", color: "Purple" },
       ]);
     },
   });
