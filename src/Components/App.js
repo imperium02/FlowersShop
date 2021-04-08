@@ -6,11 +6,12 @@ import Header from "./common/Header";
 import PageNotFound from "./PageNotFound";
 import FlowersPage from "./flowers/FlowersPage";
 import BasketPage from "./basket/BasketPage";
+import PaymentPage from "./payment/PaymentPage";
 import { ToastProvider } from "react-toast-notifications";
 
 function App() {
   return (
-    <div className="container-fluid">
+    <div className="container-fluid pt-2 pl-5 pr-5">
       <Header />
       <ToastProvider
         autoDismiss
@@ -22,6 +23,7 @@ function App() {
           <Route path="/about" component={AboutPage} />
           <Route path="/flowers" component={FlowersPage} />
           <Route path="/basket" component={BasketPage} />
+          <Route path="/payment" component={PaymentPage} />
           <Route component={PageNotFound} />
         </Switch>
       </ToastProvider>

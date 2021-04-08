@@ -40,8 +40,9 @@ function FlowersPage(props) {
               <h5 className={"card-title"}>
                 {flower.color} {flower.name}
               </h5>
+              <h5>{flower.price} zł/szt.</h5>
               <a
-                className={"btn btn-primary"}
+                className={"btn btn-primary mt-2"}
                 onClick={() => handleAddToCart(flower)}
               >
                 Dodaj do koszyka
