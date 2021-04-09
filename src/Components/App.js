@@ -8,6 +8,7 @@ import FlowersPage from "./flowers/FlowersPage";
 import BasketPage from "./basket/BasketPage";
 import PaymentPage from "./payment/PaymentPage";
 import { ToastProvider } from "react-toast-notifications";
+import PaymentSuccess from "./payment/PaymentSuccesspage";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
           <Route path="/flowers" component={FlowersPage} />
           <Route path="/basket" component={BasketPage} />
           <Route path="/payment" component={PaymentPage} />
+          <Route path="/paymentSuccess" component={PaymentSuccess} />
           <Route component={PageNotFound} />
         </Switch>
       </ToastProvider>
