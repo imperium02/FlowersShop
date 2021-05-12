@@ -24,6 +24,11 @@ function Header() {
             Kontakt
           </Nav.Link>
         </NavItem>
+        <NavItem href={"/partner"}>
+          <Nav.Link as={NavLink} to={"/partner"}>
+            Partner
+          </Nav.Link>
+        </NavItem>
       </Nav>
       <Nav className={"ml-auto"}>
         <NavItem href={"/basket"} className={"mr-sm-2"}>
