@@ -11,6 +11,7 @@ import * as prescriptionActions from "../../redux/actions/prescriptionActions";
 function PrescriptionPage(props) {
   const { addToast } = useToasts();
   const [prescription, setPrescription] = useState("");
+  const [pesel, setPESEL] = useState("");
 
   useEffect(() => {
     if (props.prescriptions.length === 0) {
@@ -24,7 +25,11 @@ function PrescriptionPage(props) {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    if (props.prescriptions.find((presc) => presc.number === prescription)) {
+    console.log(pesel.length);
+    if (
+      props.prescriptions.find((presc) => presc.number === prescription) &&
+      pesel.length === 11
+    ) {
       const prs = props.prescriptions.find((el) => el.number === prescription);
       props.cartActions.addItemToCart(prs);
       if (props.cart.items.find((el) => el.id === prs.id)) {
@@ -37,7 +42,7 @@ function PrescriptionPage(props) {
         appearance: "success",
       });
     } else {
-      addToast(`Zła recepta`, {
+      addToast(`Zła recepta lub niepoprawny PESEL`, {
         appearance: "warning",
       });
     }
@@ -58,6 +63,14 @@ function PrescriptionPage(props) {
                 name="nrRec"
                 className="form-control"
                 onChange={handleChange}
+              ></input>
+              <label htmlFor="nrPESEL">Wpisz PESEL:</label>
+              <input
+                type="text"
+                id="nrPESEL"
+                name="nrPESEL"
+                className="form-control"
+                onChange={(event) => setPESEL(event.target.value)}
               ></input>
             </div>
             <button type="submit" className="btn btn-primary">
