@@ -10,6 +10,7 @@ import PaymentPage from "./payment/PaymentPage";
 import { ToastProvider } from "react-toast-notifications";
 import PaymentSuccess from "./payment/PaymentSuccesspage";
 import PartnerPage from "./partner/PartnerPage";
+import PrescriptionPage from "./prescription/PrescriptionPage";
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
           <Route path="/payment" component={PaymentPage} />
           <Route path="/paymentSuccess" component={PaymentSuccess} />
           <Route path="/partner" component={PartnerPage} />
+          <Route path="/prescription" component={PrescriptionPage} />
           <Route component={PageNotFound} />
         </Switch>
       </ToastProvider>

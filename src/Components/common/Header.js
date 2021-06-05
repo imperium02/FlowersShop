@@ -6,7 +6,7 @@ function Header() {
   return (
     <Navbar sticky={"top"} bg={"dark"} variant={"dark"}>
       <Navbar.Brand as={NavLink} to={"/"}>
-        Kwiaciarnia
+        Apteka
       </Navbar.Brand>
       <Nav className={"mr-auto"}>
         <NavItem>
@@ -16,17 +16,12 @@ function Header() {
         </NavItem>
         <NavItem href={"/flowers"}>
           <Nav.Link as={NavLink} to={"/flowers"}>
-            Kwiaty
+            Leki bez recepty
           </Nav.Link>
         </NavItem>
-        <NavItem href={"/about"}>
-          <Nav.Link as={NavLink} to={"/about"}>
-            Kontakt
-          </Nav.Link>
-        </NavItem>
-        <NavItem href={"/partner"}>
-          <Nav.Link as={NavLink} to={"/partner"}>
-            Partner
+        <NavItem href={"/prescription"}>
+          <Nav.Link as={NavLink} to={"/prescription"}>
+            Recepta
           </Nav.Link>
         </NavItem>
       </Nav>

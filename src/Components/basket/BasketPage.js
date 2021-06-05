@@ -25,10 +25,10 @@ function BasketPage(props) {
         </colgroup>
         <thead>
           <tr>
-            <th>Gatunek</th>
-            <th>Kolor</th>
+            <th>Rodzaj</th>
+            <th>Nazwa</th>
             <th>Ilość</th>
-            <th>Cena</th>
+            <th>Cena szt.</th>
           </tr>
         </thead>
         <tbody>
