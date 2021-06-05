@@ -21,6 +21,7 @@ export function makeServer(environment = { environment: "test" }) {
           color: "Anty1",
           price: 34.54,
           number: "430654",
+          refundation: 20,
         },
         {
           id: "5",
@@ -28,6 +29,7 @@ export function makeServer(environment = { environment: "test" }) {
           color: "Anty2",
           price: 23.35,
           number: "537257",
+          refundation: 50,
         },
       ]);
     },

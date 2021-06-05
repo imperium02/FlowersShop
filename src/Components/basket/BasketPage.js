@@ -91,7 +91,7 @@ function BasketPage(props) {
                 {el.name === "Antybiotyk" && (
                   <th>
                     <s style={{ color: "grey" }}>
-                      {(el.price * 1.2).toFixed(2)}
+                      {(el.price / (1 - el.refundation / 100)).toFixed(2)}
                     </s>
                     <br />
                     {el.price.toFixed(2)} zł
