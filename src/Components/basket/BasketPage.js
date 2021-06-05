@@ -37,28 +37,54 @@ function BasketPage(props) {
               <tr key={el.id}>
                 <th>{el.name}</th>
                 <th>{el.color}</th>
-                <th>
-                  <a
-                    onClick={() => incrementItem(el)}
-                    className={"btn btn-outline-info m-1"}
-                    style={{ width: 3 + "em" }}
-                  >
-                    +
-                  </a>
-                  <input
-                    value={el.qty}
-                    readOnly
-                    className={"btn btn-outline-dark"}
-                    style={{ width: 4 + "em" }}
-                  />
-                  <a
-                    onClick={() => decrementItem(el)}
-                    className={"btn btn-outline-danger m-1"}
-                    style={{ width: 3 + "em" }}
-                  >
-                    -
-                  </a>
-                </th>
+                {el.name === "Lek" && (
+                  <th>
+                    <a
+                      onClick={() => incrementItem(el)}
+                      className={"btn btn-outline-info m-1"}
+                      style={{ width: 3 + "em" }}
+                    >
+                      +
+                    </a>
+                    <input
+                      value={el.qty}
+                      readOnly
+                      className={"btn btn-outline-dark"}
+                      style={{ width: 4 + "em" }}
+                    />
+                    <a
+                      onClick={() => decrementItem(el)}
+                      className={"btn btn-outline-danger m-1"}
+                      style={{ width: 3 + "em" }}
+                    >
+                      -
+                    </a>
+                  </th>
+                )}
+                {el.name === "Antybiotyk" && (
+                  <th>
+                    <a
+                      onClick={() => incrementItem(el)}
+                      className={"btn btn-outline-secondary m-1 disabled"}
+                      style={{ width: 3 + "em" }}
+                    >
+                      +
+                    </a>
+                    <input
+                      value={el.qty}
+                      readOnly
+                      className={"btn btn-outline-dark disabled"}
+                      style={{ width: 4 + "em" }}
+                    />
+                    <a
+                      onClick={() => decrementItem(el)}
+                      className={"btn btn-outline-secondary m-1 disabled"}
+                      style={{ width: 3 + "em" }}
+                    >
+                      -
+                    </a>
+                  </th>
+                )}
                 <th>{(el.price * el.qty).toFixed(2)} zł</th>
               </tr>
             );
