@@ -85,7 +85,18 @@ function BasketPage(props) {
                     </a>
                   </th>
                 )}
-                <th>{(el.price * el.qty).toFixed(2)} zł</th>
+                {el.name === "Lek" && (
+                  <th>{(el.price * el.qty).toFixed(2)} zł</th>
+                )}
+                {el.name === "Antybiotyk" && (
+                  <th>
+                    <s style={{ color: "grey" }}>
+                      {(el.price * 1.2).toFixed(2)}
+                    </s>
+                    <br />
+                    {el.price.toFixed(2)} zł
+                  </th>
+                )}
               </tr>
             );
           })}
