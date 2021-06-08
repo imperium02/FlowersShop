@@ -1,10 +1,13 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import * as cartActions from "../../redux/actions/cartActions";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
+import { useToasts } from "react-toast-notifications";
 
 function BasketPage(props) {
+  const { addToast } = useToasts();
+
   function incrementItem(item) {
     props.updateCartQTY(item);
   }
@@ -12,6 +15,11 @@ function BasketPage(props) {
   function decrementItem(item) {
     props.decrementCartQTY(item);
   }
+
+  const [rebate, setRebate] = useState("");
+  const [rebateAmount, setRebateAmount] = useState(1);
+
+  const [rebateButton, setRebateButton] = useState("Wykorzystaj kod");
 
   return (
     <>
@@ -67,20 +75,98 @@ function BasketPage(props) {
             <th> </th>
             <th> </th>
             <th>Suma:</th>
-            <th>
-              {props.cart.items
-                .reduce((prev, curr) => {
-                  return prev + curr.price * curr.qty;
-                }, 0)
-                .toFixed(2)}{" "}
-              zł
-            </th>
+            {rebateAmount !== 1 && (
+              <th>
+                <s>
+                  {props.cart.items
+                    .reduce((prev, curr) => {
+                      return prev + curr.price * curr.qty;
+                    }, 0)
+                    .toFixed(2)}{" "}
+                  zł
+                </s>
+                <p>
+                  {(
+                    props.cart.items.reduce((prev, curr) => {
+                      return prev + curr.price * curr.qty;
+                    }, 0) * rebateAmount
+                  ).toFixed(2)}{" "}
+                  zł
+                </p>
+              </th>
+            )}
+            {rebateAmount === 1 && (
+              <th>
+                {props.cart.items
+                  .reduce((prev, curr) => {
+                    return prev + curr.price * curr.qty;
+                  }, 0)
+                  .toFixed(2)}{" "}
+                zł
+              </th>
+            )}
           </tr>
         </tbody>
       </table>
       <Link to={"/payment"} className={"btn btn-outline-primary"}>
         Zapłać
       </Link>
+      <div
+        style={{
+          marginLeft: "auto",
+          marginRight: "0",
+          width: "25vw",
+          minWidth: "20em",
+        }}
+      >
+        {" "}
+        <form
+          onSubmit={(event) => {
+            event.preventDefault();
+            if (rebate !== "") {
+              if (rebate === "123456") {
+                setRebateAmount(0.8);
+                setRebateButton("Zmień kod");
+                addToast("Dodano kod rabatowy", {
+                  appearance: "success",
+                });
+              } else if (rebate === "654321") {
+                setRebateAmount(0.5);
+                setRebateButton("Zmień kod");
+                addToast("Dodano kod rabatowy", {
+                  appearance: "success",
+                });
+              } else {
+                addToast("Błędny kod rabatowy", {
+                  appearance: "warning",
+                });
+              }
+            } else {
+              addToast("Nie wpisano kodu rabatowego", {
+                appearance: "warning",
+              });
+            }
+          }}
+        >
+          <div className="form-group">
+            <p>123456</p>
+            <p>654321</p>
+            <label htmlFor="rabat">Kod rabatowy:</label>
+            <input
+              type="text"
+              id="rabat"
+              name="rabat"
+              className="form-control"
+              onChange={(event) => {
+                setRebate(event.target.value);
+              }}
+            />
+          </div>
+          <button type="submit" className="btn btn-primary">
+            {rebateButton}
+          </button>
+        </form>
+      </div>
     </>
   );
 }
