@@ -127,15 +127,21 @@ function BasketPage(props) {
               if (rebate === "123456") {
                 setRebateAmount(0.8);
                 setRebateButton("Zmień kod");
-                addToast("Dodano kod rabatowy", {
-                  appearance: "success",
-                });
+                addToast(
+                  `Dodano kod rabatowy ${((1 - 0.8) * 100).toFixed(1)}%`,
+                  {
+                    appearance: "success",
+                  }
+                );
               } else if (rebate === "654321") {
                 setRebateAmount(0.5);
                 setRebateButton("Zmień kod");
-                addToast("Dodano kod rabatowy", {
-                  appearance: "success",
-                });
+                addToast(
+                  `Dodano kod rabatowy ${((1 - 0.5) * 100).toFixed(1)}%`,
+                  {
+                    appearance: "success",
+                  }
+                );
               } else {
                 addToast("Błędny kod rabatowy", {
                   appearance: "warning",
